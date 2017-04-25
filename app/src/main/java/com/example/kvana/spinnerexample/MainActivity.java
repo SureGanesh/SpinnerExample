@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +15,8 @@ import java.sql.Array;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
     Spinner spinner;
+    RatingBar rb;
+    TextView value;
     AutoCompleteTextView acTextView;
     String[] countries={"Afghanistan","Albania","Andorra","Iceland","India","Iran","Iraq"};
 
@@ -25,10 +28,21 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
        ArrayAdapter adapter = ArrayAdapter.createFromResource(this,R.array.days,android.R.layout.simple_spinner_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+
         acTextView= (AutoCompleteTextView) findViewById(R.id.actextview);
         ArrayAdapter arrayAdapter=new ArrayAdapter(this,android.R.layout.select_dialog_item,countries);
         acTextView.setThreshold(1);
         acTextView.setAdapter(arrayAdapter);
+
+        rb= (RatingBar) findViewById(R.id.ratingbar);
+        value= (TextView) findViewById(R.id.value_textview);
+        rb.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser)
+            {
+                value.setText("value :"+rating);
+            }
+        });
     }
 
     @Override
