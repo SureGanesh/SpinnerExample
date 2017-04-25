@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         TextView myText=(TextView)view;
-        Toast.makeText(this,"you Selected "+myText.getText(),Toast.LENGTH_LONG).show();git
+        Toast.makeText(this,"you Selected "+myText.getText(),Toast.LENGTH_LONG).show();
     }
 
     @Override
